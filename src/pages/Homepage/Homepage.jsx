@@ -2,6 +2,7 @@ import React from "react";
 import homeBgDesktop from "../../assets/home/background-home-desktop.jpg";
 import homeBgTablet from "../../assets/home/background-home-tablet.jpg";
 import homeBgMobile from "../../assets/home/background-home-mobile.jpg";
+import { Link } from "react-router-dom";
 
 function Homepage() {
     return (
@@ -35,12 +36,12 @@ function Homepage() {
                     edge of it. Well sit back, and relax because we’ll give you
                     a truly out of this world experience!
                 </p>
-                <div className="explore">
+                <Link to="destination" className="explore">
                     <div className="relative group">
                         <div className="overlay opacity-[7%] group-hover:scale-[170%] transition duration-300"></div>
                         <span>explore</span>
                     </div>
-                </div>
+                </Link>
             </div>
         </div>
     );

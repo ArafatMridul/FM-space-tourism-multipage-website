@@ -30,8 +30,9 @@
         --fs-40: calc(40 / 16 * 1rem);
         --fs-32: calc(32 / 16 * 1rem);
         --fs-28: calc(28 / 16 * 1rem);
-        --fs-16: calc(16 / 16 * 1rem);
+        --fs-20: calc(20 / 16 * 1rem);
         --fs-18: calc(18 / 16 * 1rem);
+        --fs-16: calc(16 / 16 * 1rem);
         --fs-15: calc(15 / 16 * 1rem);
         --fs-14: calc(14 / 16 * 1rem);
 
@@ -373,6 +374,7 @@
             font-family: var(--ff-bellefair);
             font-size: var(--fs-destination-h1);
             text-transform: uppercase;
+            line-height: normal;
         }
 
         h2 {
@@ -388,6 +390,10 @@
             span {
                 font-weight: bold;
                 color: var(--c-blue-300);
+            }
+
+            @media (min-width: 700px) {
+                margin-inline: 0 auto;
             }
         }
 
@@ -424,44 +430,103 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            gap: 32px;
             margin-top: 88px;
             text-align: center;
-
-            .planetImg {
-                width: 150px;
-                height: 150px;
-                margin-inline: auto;
-
-                @media (min-width: 700px) {
-                    width: 300px;
-                    height: 300px;
-                }
-
-                @media (min-width: 1100px) {
-                    width: 480px;
-                    height: 480px;
-                }
-            }
 
             .upper {
                 display: flex;
                 flex-direction: column;
+                padding-block: 24px 32px;
                 gap: 24px;
+
+                .planetImg {
+                    width: 150px;
+                    height: 150px;
+                    margin-inline: auto;
+
+                    @media (min-width: 700px) {
+                        width: 300px;
+                        height: 300px;
+                        margin-block: 42px;
+                    }
+
+                    @media (min-width: 1100px) {
+                        width: 480px;
+                        height: 480px;
+                        margin-block: 75px;
+                        margin-inline: 0;
+                        margin-right: auto;
+                    }
+                }
+
+                @media (min-width: 700px) {
+                    padding-block: 0;
+                }
+
+                @media (min-width: 1100px) {
+                    grid-area: upper;
+                }
             }
 
             .middle {
                 display: flex;
                 flex-direction: column;
-                gap: 24px;
+                gap: 16px;
+                padding-bottom: 24px;
+                border-bottom: 1px solid #d0d6f948;
+
+                ul {
+                    margin-bottom: 24px;
+
+                    @media (min-width: 1100px) {
+                        justify-content: start;
+                    }
+                }
+
+                @media (min-width: 700px) {
+                    max-width: 514px;
+                    margin-inline: auto;
+                    padding-bottom: 24px;
+                }
+
+                @media (min-width: 1100px) {
+                    text-align: left;
+                    padding-top: 133px;
+                    grid-area: middle;
+
+                    p {
+                        padding-right: 64px;
+                    }
+                }
             }
 
             .lower {
                 display: flex;
                 flex-direction: column;
                 gap: 24px;
-                padding-top: 12px;
-                border-top: 1px solid #d0d6f948;
+                padding-top: 24px;
+                margin-inline: auto;
+
+                @media (min-width: 700px) {
+                    width: 514px;
+                    flex-direction: row;
+                    justify-content: space-between;
+
+                    h4 {
+                        margin-bottom: 12px;
+                    }
+                }
+
+                @media (min-width: 1100px) {
+                    grid-area: lower;
+                    padding-bottom: 133px;
+
+                    div {
+                        height: 62px;
+                        width: full;
+                        align-items: start;
+                    }
+                }
             }
 
             @media (min-width: 700px) {
@@ -471,7 +536,15 @@
 
             @media (min-width: 1100px) {
                 margin-top: 136px;
-                padding: 48px;
+                padding: 0;
+                padding-top: 48px;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+
+                grid-template-areas:
+                    "upper middle"
+                    "upper lower";
             }
         }
     }

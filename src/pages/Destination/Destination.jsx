@@ -3,26 +3,13 @@ import React, { useEffect, useState } from "react";
 import destinationBgDesktop from "../../assets/destination/background-destination-desktop.jpg";
 import destinationBgTablet from "../../assets/destination/background-destination-tablet.jpg";
 import destinationBgMobile from "../../assets/destination/background-destination-mobile.jpg";
+import { destinations } from "../../../data/data.json";
 
 function Destination() {
-    const [selectedId, setSelectedId] = useState("02e2");
-    const [selectedPlanet, setSelectedPlanet] = useState({});
+    const [selectedId, setSelectedId] = useState(0);
 
-    const { name, images, description, distance, travel } = selectedPlanet;
-
-    useEffect(
-        function () {
-            async function getPlanet() {
-                const res = await fetch(
-                    `http://localhost:8000/destinations/${selectedId}`
-                );
-                const data = await res.json();
-                setSelectedPlanet(data);
-            }
-            getPlanet();
-        },
-        [selectedId]
-    );
+    const { name, images, description, distance, travel } =
+        destinations[selectedId];
 
     return (
         <div className="wrapper destination">
@@ -60,65 +47,33 @@ function Destination() {
                     </div>
                 </div>
                 <div className="middle">
+                    <div>
+                        <ul className="flex items-center justify-center gap-8">
+                            {destinations.map((planet, index) => (
+                                <li
+                                    onClick={() => setSelectedId(index)}
+                                    className={`
+                                    ${
+                                        selectedId === index
+                                            ? "after:absolute after:left-0 after:right-0 after:-bottom-3 after:bg-white after:h-1"
+                                            : " hover:after:absolute hover:after:left-0 hover:after:right-0 hover:after:-bottom-3 hover:after:bg-white/30 hover:after:h-1"
+                                    } relative cursor-pointer`}
+                                    key={index}
+                                >
+                                    <h3>{planet.name}</h3>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                     <h1>{name}</h1>
-                    <ul className="flex items-center justify-center gap-8">
-                        <li>
-                            <button
-                                onClick={() => setSelectedId("02e2")}
-                                className={
-                                    selectedId === "02e2"
-                                        ? "relative after:absolute after:-left-1 after:right-0 after:-bottom-3 after:bg-white after:h-1"
-                                        : ""
-                                }
-                            >
-                                <h3>moon</h3>
-                            </button>
-                        </li>
-                        <li>
-                            <button
-                                onClick={() => setSelectedId("56f2")}
-                                className={
-                                    selectedId === "56f2"
-                                        ? "relative after:absolute after:left-0 after:right-0 after:-bottom-3 after:bg-white after:h-1"
-                                        : ""
-                                }
-                            >
-                                <h3>mars</h3>
-                            </button>
-                        </li>
-                        <li>
-                            <button
-                                onClick={() => setSelectedId("d03f")}
-                                className={
-                                    selectedId === "d03f"
-                                        ? "relative after:absolute after:left-0 after:right-0 after:-bottom-3 after:bg-white after:h-1"
-                                        : ""
-                                }
-                            >
-                                <h3>europa</h3>
-                            </button>
-                        </li>
-                        <li>
-                            <button
-                                onClick={() => setSelectedId("4f14")}
-                                className={
-                                    selectedId === "4f14"
-                                        ? "relative after:absolute after:left-0 after:right-0 after:-bottom-3 after:bg-white after:h-1"
-                                        : ""
-                                }
-                            >
-                                <h3>titan</h3>
-                            </button>
-                        </li>
-                    </ul>
                     <p>{description}</p>
                 </div>
                 <div className="lower">
-                    <div>
+                    <div className="flex flex-col items-center justify-center md:w-1/2">
                         <h4>avg. distance</h4>
                         <span className="value">{distance}</span>
                     </div>
-                    <div>
+                    <div className="flex flex-col items-center justify-center md:w-1/2">
                         <h4>est. travel time</h4>
                         <span className="value">{travel}</span>
                     </div>
