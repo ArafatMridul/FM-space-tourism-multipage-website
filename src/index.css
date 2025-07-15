@@ -51,9 +51,13 @@
         --fs-crew-h1: var(--fs-24);
         --fs-crew-h2: var(--fs-18);
         --fs-crew-h3: var(--fs-16);
-        --fs-crew-hp: var(--fs-15);
+        --fs-crew-p: var(--fs-15);
 
-        --fs-technology-h1: var(--fs-144);
+        --fs-technology-h1: var(--fs-24);
+        --fs-technology-h2: var(--fs-18);
+        --fs-technology-h3: var(--fs-16);
+        --fs-technology-h4: var(--fs-18);
+        --fs-technology-p: var(--fs-15);
 
         @media (min-width: 700px) {
             --fs-homepage-h1: var(--fs-144);
@@ -68,7 +72,13 @@
             --fs-crew-h1: var(--fs-40);
             --fs-crew-h2: var(--fs-24);
             --fs-crew-h3: var(--fs-20);
-            --fs-crew-hp: var(--fs-16);
+            --fs-crew-p: var(--fs-16);
+
+            --fs-technology-h1: var(--fs-40);
+            --fs-technology-h2: var(--fs-24);
+            --fs-technology-h3: var(--fs-20);
+            --fs-technology-h4: var(--fs-24);
+            --fs-technology-p: var(--fs-16);
         }
 
         @media (min-width: 1100px) {
@@ -81,7 +91,13 @@
             --fs-crew-h1: var(--fs-56);
             --fs-crew-h2: var(--fs-32);
             --fs-crew-h3: var(--fs-28);
-            --fs-crew-hp: var(--fs-18);
+            --fs-crew-p: var(--fs-18);
+
+            --fs-technology-h1: var(--fs-56);
+            --fs-technology-h2: var(--fs-32);
+            --fs-technology-h3: var(--fs-28);
+            --fs-technology-h4: var(--fs-32);
+            --fs-technology-p: var(--fs-18);
         }
     }
 }
@@ -679,7 +695,7 @@
                         margin-right: auto;
 
                         .description {
-                            height: 480px;
+                            height: 380px;
                         }
                     }
                 }
@@ -693,19 +709,19 @@
 
                 img {
                     height: 340px;
+                    -webkit-mask-image: linear-gradient(
+                        to bottom,
+                        black 80%,
+                        transparent 100%
+                    );
+                    mask-image: linear-gradient(
+                        to bottom,
+                        black 80%,
+                        transparent 100%
+                    );
 
                     @media (min-width: 700px) {
                         height: 560px;
-                        -webkit-mask-image: linear-gradient(
-                            to bottom,
-                            black 80%,
-                            transparent 100%
-                        );
-                        mask-image: linear-gradient(
-                            to bottom,
-                            black 80%,
-                            transparent 100%
-                        );
                     }
 
                     @media (min-width: 1100px) {
@@ -728,6 +744,204 @@
                 gap: 40px;
             }
         }
+    }
+
+    .technology {
+        width: 100vw;
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
+        padding-bottom: 24px;
+
+        .tech_image {
+            position: fixed;
+            inset: 0;
+            z-index: -999;
+        }
+
+        h1 {
+            font-family: var(--ff-bellefair);
+            font-size: var(--fs-technology-h1);
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-family: var(--ff-bellefair);
+            font-size: var(--fs-technology-h2);
+            color: #d0d6f948;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            font-family: var(--ff-barlow-cond);
+            font-size: var(--fs-technology-h3);
+            text-transform: uppercase;
+            letter-spacing: 15%;
+        }
+
+        h4 {
+            font-family: var(--ff-bellefair);
+            font-size: var(--fs-technology-h4);
+        }
+
+        p {
+            font-family: var(--ff-barlow);
+            font-size: var(--fs-technology-p);
+            color: var(--c-blue-300);
+            line-height: 180%;
+        }
+
+        .tech_hero {
+            margin-top: 88px;
+
+            h3 {
+                margin-top: 24px;
+
+                span {
+                    margin-right: 24px;
+                    opacity: 0.6;
+                    font-weight: bold;
+                }
+
+                @media (min-width: 700px) {
+                    margin-top: 40px;
+                    text-align: left;
+                }
+            }
+
+            h2 {
+                margin-top: 40px;
+                text-align: center;
+
+                @media (min-width: 1100px) {
+                    text-align: left;
+                }
+            }
+
+            h1 {
+                margin-top: 16px;
+                text-align: center;
+
+                @media (min-width: 1100px) {
+                    text-align: left;
+                }
+            }
+
+            p {
+                margin-top: 16px;
+                text-align: center;
+
+                @media (min-width: 1100px) {
+                    text-align: left;
+                }
+            }
+
+            .des {
+                margin-top: 24px;
+            }
+
+            .opp {
+                margin-top: 32px;
+
+                @media (min-width: 1100px) {
+                    width: 635px;
+                    grid-column: 1;
+                    grid-row: 1;
+
+                    display: grid;
+                    grid-template-columns: 80px 1fr;
+                    gap: 64px;
+                }
+            }
+
+            .options {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 16px;
+
+                @media (min-width: 1100px) {
+                    flex-direction: column;
+                    margin-block: auto;
+                    gap: 32px;
+                }
+            }
+
+            .option {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 40px;
+                width: 40px;
+
+                @media (min-width: 700px) {
+                    height: 56px;
+                    width: 56px;
+                }
+
+                @media (min-width: 1100px) {
+                    height: 80px;
+                    width: 80px;
+                }
+            }
+
+            @media (min-width: 700px) {
+                margin-top: 96px;
+            }
+
+            @media (min-width: 1100px) {
+                margin-top: 96px;
+            }
+        }
+    }
+}
+
+.names {
+    @media (min-width: 1100px) {
+        padding-top: 80px;
+    }
+}
+
+.opps_container {
+    @media (min-width: 1100px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.desk {
+    @media (min-width: 1100px) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+    }
+}
+
+.tab {
+    @media (min-width: 701px) and (max-width: 1099px) {
+        width: 512px;
+        margin-inline: auto;
+    }
+}
+
+.spaceship_img {
+    grid-column: 1 / -1;
+    height: 258px;
+    margin-top: 64px;
+
+    img {
+        height: 100%;
+        width: 100%;
+    }
+
+    @media (min-width: 700px) {
+        height: 357px;
+    }
+
+    @media (min-width: 1100px) {
+        grid-column: 2;
+        height: 550px;
     }
 }
 

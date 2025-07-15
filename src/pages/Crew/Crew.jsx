@@ -24,7 +24,7 @@ function Crew() {
                     media="(min-width:700px)"
                     srcSet={crewBgTablet}
                     width="768px"
-                    height="2048px"
+                    height="1024px"
                 />
                 <img
                     src={crewBgMobile}
